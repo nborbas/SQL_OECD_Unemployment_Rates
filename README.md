@@ -18,12 +18,12 @@ Find the interactive on my [Tableau Public profile](https://public.tableau.com/a
 ## A short exploration with SQL
 
 Following a case study logic, I proposed some questions that I wanted the answers for from the data provided.  
->SQL codes to be found under file: **case_study.sql**
+>SQL codes to be found under file: **codes.sql**
 
 
 The dataset has a monthly granularity, thus I wanted to see the big picture first on a yearly level.  
-**What are the average unemployment rates each year by country (focusing on last 10 years)?**
-
+### Question 1: What are the average unemployment rates each year by country (focusing on last 10 years)?
+(limited to first 5 record)  
 | country_name  | year | avg_rate |
 | ------------- | ------------- | ------------- |
 | Australia  | 2011 | 5.08 |
@@ -34,7 +34,8 @@ The dataset has a monthly granularity, thus I wanted to see the big picture firs
 ...
 
 
-**What are these averages by adding gender? Which is higher?**
+### Question 2: What are these averages by adding gender? Which is higher?
+(limited to first 5 record)  
 | country_name  | year | all_avg_rate | male_avg_rate | female_avg_rate | is_male_higher |is_female_higher |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | Australia  | 2011 | 5.08 |4.09 |5.3|0|1 |
@@ -46,7 +47,8 @@ The dataset has a monthly granularity, thus I wanted to see the big picture firs
 
 
 Now, going back to monthly granularity. We have a bunch of countries, so let's focus only on the USA.  
-**Is the overall unemployment rate (incl. both women and men) increased or decreased compared to the previous month?**
+### Question 3: Is the overall unemployment rate (incl. both women and men) increased or decreased compared to the previous month?
+(limited to first 5 record)  
 | country_name  | month | avg_rate | previous_avg_rate | is_higher_than_prev_month | 
 | ------------- | ------------- | ------------- | ------------- | ------------- | 
 | United States of America  | 2011-09-01 | 9 | 9 |0|
@@ -57,7 +59,8 @@ Now, going back to monthly granularity. We have a bunch of countries, so let's f
 ...
 
 Unemployment rate looks volatile, so let's examine a wider, year-over-year period.  
-**Is the overall unemployment rate (incl. both women and men) increased or decreased compared to the previous period last year?**
+### Question 4: Is the overall unemployment rate (incl. both women and men) increased or decreased compared to the previous period last year?
+(limited to first 5 record)  
 | country_name  | month | avg_rate | previous_year_avg_rate | is_higher_than_prev_year | 
 | ------------- | ------------- | ------------- | ------------- | ------------- | 
 | United States of America  | 2011-09-01 | 9 | 9.5 |0|
@@ -68,7 +71,8 @@ Unemployment rate looks volatile, so let's examine a wider, year-over-year perio
 ...
 
 Zooming into the pandemic period. This seems interesting.  
-**What is the YOY growth percentage of the unemployment rate in the USA during the pandemic period?**
+### Question 5: What is the YOY growth percentage of the unemployment rate in the USA during the pandemic period?
+(limited to first 5 record)  
 | country_name  | month | avg_rate | previous_year_avg_rate | yoy_pct_growth | 
 | ------------- | ------------- | ------------- | ------------- | ------------- | 
 | United States of America  | 2020-03-01 | 4.4 | 3.8 |16|
@@ -82,7 +86,7 @@ Zooming into the pandemic period. This seems interesting.
 I love SQL, but let's see this data for all of the countries in our dataset.  
 I have recreated the above logic to Tableau calculation which is shared below, under "The building process" section.  
 
-## The building process
+## The visualization building process
 
 **Building the Small Multiples**  
 - XX
