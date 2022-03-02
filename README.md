@@ -89,19 +89,50 @@ I have recreated the above logic to Tableau calculation which is shared below, u
 ## The visualization building process
 
 **Building the Small Multiples**  
-- XX
-- XX
+The chart is built based on Andy Kriebel's video: [LINK](https://www.youtube.com/watch?v=6_oMj9sKILQ)  
+This diagram divides the view into a "matrix", based on the column and row numbers provided in the formula.  
+Andy's formula creates the number of colummns and rows based on our available data/view and here is how these 2 calculations are structured:
+
+```
+// Column
+(INDEX()-1)%(ROUND(SQRT(SIZE())))
+```
+```
+// Row
+INT((INDEX()-1)/(ROUND(SQRT(SIZE()))))
+```
 
 **Immitating area charts with lines, bars and a shared Y-axis**  
-- XX
-- XX
+Area charts are great in Tableau, but you cannot apply date-based coloring to the view, meaning, that you can only use 1 color to the whole area.  
+Thankfully, there is a workaround to this: using a bar chart with a line chart (or just using its markers).  
+Here is how my Columns and Rows Shelf looks like:  
+![image](https://user-images.githubusercontent.com/96722899/156333484-496f8207-b026-4106-8814-b16284982569.png)
+
+Steps:
+- Use put the same measure twice on the Rows shelf
+- Set Dual Axis, by right-clicking the second measure
+- Do not forget to synchronize the axes!
+
+Now you are able to apply date-based coloring separately to the bar and the line chart which imitates the original area chart idea.
 
 **Adding Small Multiple titles aka a workaround with layering**  
-- Country Names with layered worksheet 
+As I played the double axis card with the area chart immitation, I was not able to add the Country Names in the "standard', Trellis way. (Which is using the same dual axis logic as above, but instead using a constant line for which the Country Name is put on the Text mark.)  
 
-**Annotations**
-- Figma
-- Annotation (Alli Torban blog)  
+My idea here was to duplicate the original worksheet and clear the original "area chart" and instead add the constant line on a dual axis like described above in brackets.  
+Then this clear worksheet containing the only the Country Names can be **layered** under the original worksheet.
 
-**Colors**
-- Color choices
+To check how it works, feel free to download the workbook and check how the dashboard is built up.
+
+**Annotations**  
+Titles, text etc., as usually in my recent visualizations, are created in [Figma](https://figma.com/).  
+Although, for the in-chart annotations in this visualization were created by Tableau's Point Annotation functionality.  
+
+I would like to mention here the podcast by Alli Torban, Data Viz Today, where an episode was devoted to how to annotate efficiently.  
+Here you can find the Show Notes for this episode: [LINK](https://dataviztoday.com/shownotes/07)  
+
+Learning from this podcast, I decided to highlight few of the largest growths in YOY unemployment rate changes which highlight how the pandemic put an end to a trend of 10-years decrease or constant low level of unemployment rates.
+
+Examples include USA and Canada as seen in this snippet:  
+![image](https://user-images.githubusercontent.com/96722899/156344883-969ab7ef-1b35-4e36-a5c7-4fd15c2bf3d2.png)
+
+*Thank you for reading!*
